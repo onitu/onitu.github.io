@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     jade = require('gulp-jade'),
     concat = require('gulp-concat'),
-    open = require('gulp-open'),
     livereload = require('gulp-livereload');
 
 gulp.task('html', function() {
@@ -34,9 +33,20 @@ gulp.task('images', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
-gulp.task("open", function(){
-  return gulp.src("dist/index.html")
-    .pipe(open("<%file.path%>"));
+gulp.task('server', function(next) {
+  var connect = require('connect'),
+      http = require("http")
+
+  http.createServer(
+    connect()
+      .use(require("connect-livereload")())
+      .use(require("serve-static")('dist/'))
+  )
+  .listen(8080);
+
+  if(next) {
+      next();
+  }
 });
 
 gulp.task('watch', function() {
@@ -50,4 +60,4 @@ gulp.task('watch', function() {
 });
 
 
-gulp.task("default", ['html', 'css', 'js', 'open', 'watch']);
+gulp.task("default", ['html', 'css', 'js', 'server', 'watch']);
