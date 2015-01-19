@@ -19,6 +19,17 @@ gulp.task('css', function() {
     .pipe(gulp.dest('dist/css'))
 });
 
+gulp.task('vendors', function() {
+    return gulp.src('css/vendors/**/*', {base: '.'})
+        .pipe(gulp.dest('dist/'))
+});
+
+gulp.task('fonts', function() {
+    return gulp.src('css/fonts/**/*')
+    .pipe(plumber())
+    .pipe(gulp.dest('dist/css/fonts/'))
+});
+
 gulp.task('js', function() {
   return gulp.src('js/**/*.js')
     .pipe(plumber())
@@ -26,11 +37,10 @@ gulp.task('js', function() {
     .pipe(gulp.dest('dist/js'))
 });
 
-gulp.task('images', function() {
+gulp.task('img', function() {
   return gulp.src('img/**/*')
     .pipe(plumber())
-    .pipe(gulp.dest('dist/images'))
-    .pipe(notify({ message: 'Images task complete' }));
+    .pipe(gulp.dest('dist/img/'))
 });
 
 gulp.task('server', function(next) {
@@ -40,7 +50,7 @@ gulp.task('server', function(next) {
   http.createServer(
     connect()
       .use(require("connect-livereload")())
-      .use(require("serve-static")('dist/'))
+      .use(require("serve-static")('dist/', {etag: false}))
   )
   .listen(8080);
 
@@ -54,10 +64,12 @@ gulp.task('watch', function() {
   gulp.watch('js/**/*.js', ['js']);
   gulp.watch('html/**/*.jade', ['html']);
   gulp.watch('img/**/*', ['img']);
+  gulp.watch('css/fonts/**/*', ['fonts']);
+
 
   livereload.listen();
   gulp.watch(['dist/**']).on('change', livereload.changed);
 });
 
 
-gulp.task("default", ['html', 'css', 'js', 'server', 'watch']);
+gulp.task("default", ['html', 'vendors', 'css', 'js', 'img', 'fonts', 'server', 'watch']);

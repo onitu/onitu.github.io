@@ -1,0 +1,74 @@
+html(lang="fr" ng-app="facet")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+    meta(
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    )
+    title Onitu - Sync and share your files
+    link(rel="stylesheet" href="css/app.css")
+  body
+    section.slide#home
+      .logo
+        img(src="img/onitu.svg", alt="Onitu")
+        
+      .button
+        a(href="https://github.com/onitu/onitu") Download on Github <i class="fa fa-github"></i>
+      
+      ul.icons
+        li
+          img(src="img/services/drive.svg", alt="Google Drive")
+        li
+          img(src="img/services/dropbox-wide.svg", alt="Dropbox")
+        li
+          img(src="img/services/evernote-wide.svg", alt="Evernote")
+        li
+          img(src="img/services/flickr.svg", alt="Flickr")
+        li
+          img(src="img/services/hubic.png", alt="Hubic")
+        li
+          img(src="img/services/s3.svg", alt="Amazon S3")
+        li
+          img(src="img/services/ssh.svg", alt="SSH")
+          
+    
+    section.slide#description
+      .container
+        .bullet.even
+          .image
+            i.fa.fa-hdd-o
+          .content
+            h2 Your favourite services, together at last
+            p
+              | With Onitu you can use all your services (Dropbox, Drive, Evernote…) and share
+              | any data between them. You want to save your notes from Evernote on your FTP server ?
+              | No problem ! You want to edit your Dropbox files with Google Docs ? Easy peasy. You want
+              | to put your laptop photos on Flickr ? Do it in a breeze.
+        
+        .bullet.odd
+          .image
+            i.fa.fa-send-o
+          .content
+            h2 Install it anywhere: no subscription, no fee, no third-party
+            p
+              | Onitu is a Free Software and you can install on any computer. It's a community-driven
+              | project, there is no company behind it willing to steal your data or spy on you.
+              | You can connect all your computers with our client.
+      
+        .bullet.even
+          .image
+            i.fa.fa-refresh
+          .content
+            h2 Your files, your rules
+            p
+              | Orchestrate your files with specific rules for them. You can say where
+              | your files go according to their type, their size, their name, their path…
+              | For example you can send your small Videos to Dropbox, the big ones to Hubic,
+              | and backup all of them to your FTP server.
+
+
+    section.slide#facet
+      h2 One interface to rule them all
+      
+      img(src="http://placehold.it/1024x768", alt="Facet web interface")
