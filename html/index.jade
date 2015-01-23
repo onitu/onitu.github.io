@@ -9,66 +9,118 @@ html(lang="fr" ng-app="facet")
     title Onitu - Sync and share your files
     link(rel="stylesheet" href="css/app.css")
   body
-    section.slide#home
+    #home
       .logo
-        img(src="img/onitu.svg", alt="Onitu")
-        
-      .button
-        a(href="https://github.com/onitu/onitu") Download on Github <i class="fa fa-github"></i>
+        img(src="img/onitu.png", alt="Onitu")
       
-      ul.icons
-        li
-          img(src="img/services/drive.svg", alt="Google Drive")
-        li
-          img(src="img/services/dropbox-wide.svg", alt="Dropbox")
-        li
-          img(src="img/services/evernote-wide.svg", alt="Evernote")
-        li
-          img(src="img/services/flickr.svg", alt="Flickr")
-        li
-          img(src="img/services/hubic.png", alt="Hubic")
-        li
-          img(src="img/services/s3.svg", alt="Amazon S3")
-        li
-          img(src="img/services/ssh.svg", alt="SSH")
+      .text
+        .container
+          p
+            | You are using lots of different web services ? You have files everywhere
+            | and struggle to keep them synchronized ?
+            | Install Onitu and take the control back over your data !
+            
+          .button
+            a(href="https://github.com/onitu/onitu", target="_blank").
+              Download on Github <i class="fa fa-github"></i>
+      
+    ul#icons
+      li
+        img(src="img/services/drive.png", alt="Google Drive")
+      li
+        img(src="img/services/dropbox-wide.png", alt="Dropbox")
+      li
+        img(src="img/services/evernote-wide.png", alt="Evernote")
+      li
+        img(src="img/services/flickr.png", alt="Flickr")
+      li
+        img(src="img/services/hubic.png", alt="Hubic")
+      li
+        img(src="img/services/s3.png", alt="Amazon S3")
+      li
+        img(src="img/services/ssh.png", alt="SSH")
           
+    section#services
+      .side
+        .text
+          h2 Your favorite services, together
+          p
+            | With Onitu you can use all your services (Dropbox, Drive, Evernote…) and share
+            | any data between them. You want to save your notes from Evernote on your FTP server ?
+            | No problem ! You want to edit your Dropbox files with Google Docs ? Easy peasy. You want
+            | to put your laptop photos on Flickr ? Do it in a breeze.
+      .side
+        .media
+          img(src="img/services.png")
     
-    section.slide#description
-      .container
-        .bullet.even
-          .image
-            i.fa.fa-hdd-o
-          .content
-            h2 Your favourite services, together at last
-            p
-              | With Onitu you can use all your services (Dropbox, Drive, Evernote…) and share
-              | any data between them. You want to save your notes from Evernote on your FTP server ?
-              | No problem ! You want to edit your Dropbox files with Google Docs ? Easy peasy. You want
-              | to put your laptop photos on Flickr ? Do it in a breeze.
+    section#rules
+      .side
+        .media
+          img(src="img/rules.png")
+
+          
+      .side
+        .text
+          h2 Your files, your rules
+          p
+            | Orchestrate your files with specific rules for them. You can say where
+            | your files go according to their type, their size, their name, their path…
+            | For example you can send your small Videos to Dropbox, the big ones to Hubic,
+            | and backup all of them to your FTP server.
         
-        .bullet.odd
-          .image
-            i.fa.fa-send-o
-          .content
-            h2 Install it anywhere: no subscription, no fee, no third-party
-            p
-              | Onitu is a Free Software and you can install on any computer. It's a community-driven
-              | project, there is no company behind it willing to steal your data or spy on you.
-              | You can connect all your computers with our client.
-      
-        .bullet.even
-          .image
-            i.fa.fa-refresh
-          .content
-            h2 Your files, your rules
-            p
-              | Orchestrate your files with specific rules for them. You can say where
-              | your files go according to their type, their size, their name, their path…
-              | For example you can send your small Videos to Dropbox, the big ones to Hubic,
-              | and backup all of them to your FTP server.
+    section#install
+      .side
+        .text
+          h2 Install it anywhere
+          p
+            | Onitu is a Free Software and you can install on any computer. It's a community-driven
+            | project, there is no company behind it willing to steal your data or spy on you.
+            | You can connect all your computers with our client.
 
-
-    section.slide#facet
-      h2 One interface to rule them all
-      
-      img(src="http://placehold.it/1024x768", alt="Facet web interface")
+      .side
+        .media
+          img(src="img/install.png")
+          
+    section#facet
+      .side
+        .media
+          img(src="img/facet.png", alt="Facet web interface")
+          
+      .side
+        .text
+          h2 All your files in one place
+          
+          p
+            | With the Web interface, you can see the files you have in your different
+            | services, interact with them and control Onitu.
+    
+    section#team
+      .container
+        .col
+          h2 <i class="fa fa-map-marker"></i> {Epitech}
+          p
+            | Onitu is an <a href="http://www.epitech.eu/epitech-innovative-projects.aspx" target="_blank">
+            | Epitech Innovative Project</a>, which means thas it has been
+            | conceived by a team of students over the course of their 3rd, 4th
+            | and 5th years. 10 students have worked hard on Onitu during these 3
+            | years.
+          
+        .col
+          h2 <i class="fa fa-github"></i> Open Source
+          p
+            | Onitu is a Free Software. Anybody can download it, change its
+            | code and its behavior and redistribute it ! It's a project
+            | driven by its community, not by any company or industry.<br>
+            | Feel free to contribute !
+          
+        .col
+          h2 <i class="fa fa-envelope"></i> Contact us
+          p
+            | If you have any question or issue regarding Onitu, the best place
+            | to ask for help or support is the
+            | <a href="https://github.com/onitu/onitu/issues" target="_blank">Issues page</a> on Github.
+          
+          ul
+            li <i class="fa fa-slack"></i> IRC - #onitu on <a href="https://webchat.freenode.net/?channels=onitu" target="_blank">irc.freenode.org</a>
+            li <i class="fa fa-twitter"></i> Twitter - <a href="http://twitter.com/onituproject" target="_blank">@OnituProject</a>
+            li <i class="fa fa-envelope"></i> Mail - <a href="mailto:onitu_2015@labeip.epitech.eu">onitu_2015@labeip.epitech.eu</a>

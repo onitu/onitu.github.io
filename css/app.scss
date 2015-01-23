@@ -2,6 +2,12 @@
 @import 'vendors/font-awesome/css/font-awesome.css';
 @import 'vendors/susy/susy';
 
+$susy: (
+    columns: 12,
+    gutters: 0,
+    output: float,
+);
+
 @font-face {
     font-family: 'Montserrat';
     font-style: normal;
@@ -9,7 +15,17 @@
     src: local('Montserrat-Regular'), url(fonts/Montserrat.ttf) format('truetype');
 }
 
-$side-width: 80px;
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+%shadow {
+    box-shadow: inset 0 3px 5px rgba(0,0,0,0.3), inset 0 -3px 5px rgba(0,0,0,0.3);
+}
 
 html {
     width: 100%;
@@ -18,76 +34,82 @@ html {
 }
 
 body {
-    width: 100%;
+    @include show-grid;
 
-    margin: 0;
-    padding: 0;
-    padding-left: $side-width;
-
-    box-sizing: border-box;
-
-    background-image: url('/img/side.svg');
-    background-repeat: repeat-y;
-    background-size: $side-width auto;
-}
-
-html, button, input, select, textarea,
-.pure-g [class *= "pure-u"] {
-    /* Set your content font stack here: */
     font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
 }
 
-.slide {
-    height: 100vh;
-}
-
 #home {
-    background-image: url('/img/home-background.svg');
+    @include container;
+
+    $height: 35em;
+
+    background-image: url('/img/home-background.png');
     background-repeat: no-repeat;
     background-size: cover;
 
-    height: auto;
-    min-height: 90vh;
-
-    position: relative;
+    height: $height;
 
     .logo {
-        height: 60%;
-        max-width: 60%;
-
-        margin: auto;
+        @include span(8 of 12 first);
 
         img {
-            width: 100%;
+            display: block;
+            height: $height * 0.8;
+            margin: $height * 0.1 auto;
             max-width: 100%;
         }
     }
 
-    .button {
-        text-align: right;
-        padding-right: 25%;
+    .text {
+        @include span(4 of 12 last);
 
-        a {
+        position: relative;
+
+        height: 100%;
+
+        .container {
+            @include span(2 of 4);
+
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+
+        }
+
+        p {
+            color: #000;
+            font-size: 1.1em;
+            line-height: 1.8em;
+            margin-bottom: 2em;
+        }
+
+        .button {
             $color: #0588B2;
             $color-active: lighten($color, 20%);
 
+            text-align: center;
+
             transition-property: all;
             transition-duration: .3s;
-
-            font-size: 1.5em;
 
             border: 2px solid $color;
             border-radius: 5px;
             padding: 0.5em;
 
-            text-decoration: none;
-
-            color: $color;
+            a {
+                font-size: 1.5em;
+                text-decoration: none;
+                color: $color;
+            }
 
             &:hover, &:active {
-                color: $color-active;
                 border-color: $color-active;
-                outline: 0;
+
+                a {
+                    color: $color-active;
+                    outline: 0;
+                }
             }
 
             &:active {
@@ -95,104 +117,154 @@ html, button, input, select, textarea,
             }
         }
     }
+}
 
-    .icons {
-        width: 100%;
+#icons {
+    @extend %shadow;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include container;
+    @include full;
+
+    width: 100%;
+
+    height: 80px;
+
+    li {
+        margin: 0;
+        padding: 0;
+
+        display: inline-block;
+
+        width: 100% * .14;
 
         text-align: center;
 
-        padding: 0;
+        img {
+            height: 48px;
+            width: auto;
 
-        position: absolute;
-        bottom: 25px;
-
-        li {
-            display: inline;
-            margin: auto;
-
-            img {
-                height: 64px;
-                width: auto;
-                margin: 20px;
-            }
+            margin: 1em auto;
         }
     }
 }
 
-#description {
-    background-color: #F9F9F9;
+@mixin section($text-color) {
+    min-height: 30rem;
 
-    position: relative;
+    @include full;
+    @include container;
+    @include clearfix;
 
-    .container {
-        @extend .pure-g;
+    .side {
+        @include span(6 of 12 first);
 
-        width: 50%;
+        padding: 5em 0;
+    }
 
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+    .text {
+        padding: 0 10em;
+        margin: auto;
+    }
 
-        .bullet {
-            @extend .pure-u-1;
+    .media {
+        text-align: center;
+        vertical-align: center;
 
-            &.even .image {
-                float: left;
-            }
-
-            &.odd .image {
-                float: right;
-            }
-
-            .image {
-                @extend .pure-u-1-2;
-
-                text-align: center;
-
-                i {
-                    font-size: 15rem;
-                }
-            }
-
-            .content {
-                @extend .pure-u-1-2;
-
-                h2 {
-                    font-size: 30px;
-                    color: #333;
-                }
-
-                p {
-                    font-size: 16px;
-                    color: #888;
-                    line-height: 1.875em;
-                    font-weight: 300;
-                }
-            }
+        img {
+            height: 25em;
         }
     }
+
+    h2 {
+        font-size: 2em;
+        color: $text-color;
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 1.1em;
+        color: $text-color;
+        line-height: 1.8em;
+        font-weight: 300;
+    }
+}
+
+#services {
+    background-color: rgb(13, 135, 178);
+
+    @include section(#fff);
+}
+
+#rules {
+    background-color: rgb(220, 220, 220);
+
+    @extend %shadow;
+
+    @include section(#000);
+}
+
+#install {
+    background-color: rgb(2, 68, 91);
+
+    @include section(#fff);
 }
 
 #facet {
-    position: relative;
+    background-color: rgb(6, 109, 145);
 
-    background-color: #EF6C5E;
+    @extend %shadow;
 
-    h2 {
-        color: #333;
-        text-align: center;
-        font-size: 3rem;
+    @include section(#fff);
+}
 
-        margin: 0;
-        padding: 0.5em 0;
-    }
+#team {
+    background-color: rgb(220, 220, 220);
 
-    img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    @include section(#000);
+
+    .container {
+        @include span(9 of 12);
+        @include pad(1.5);
+
+        padding-top: 5em;
+        padding-bottom: 5em;
+
+        .col {
+            @include span(3 of 9);
+        }
+
+        h2 {
+            text-align: center;
+
+            color: rgb(2, 68, 91);
+
+            i {
+                color: #333;
+            }
+        }
+
+        p, ul {
+            padding: 0 5em;
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+                line-height: 2em;
+            }
+        }
+
+        a {
+            color: #333;
+
+            &:hover, &:active {
+                color: #333;
+            }
+        }
     }
 }
