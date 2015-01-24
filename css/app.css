@@ -38,7 +38,8 @@ body {
     
     
     
-     }
+    
+    position: relative; }
     #home .logo img {
       display: block;
       height: 28em;
@@ -73,14 +74,15 @@ body {
       color: #000;
       font-size: 1.1em;
       line-height: 1.8em;
-      margin-bottom: 2em; }
+      text-align: justify; }
     #home .text .button {
       text-align: center;
       transition-property: all;
       transition-duration: .3s;
       border: 2px solid #0588B2;
       border-radius: 5px;
-      padding: 0.5em; }
+      padding: 0.5em;
+      margin: 2em auto; }
       #home .text .button a {
         font-size: 1.5em;
         text-decoration: none;
@@ -92,6 +94,9 @@ body {
           outline: 0; }
       #home .text .button:active {
         box-shadow: 0 0 5px #24c5f9; }
+    #home .text .stars {
+      display: block;
+      margin: auto; }
 
 #icons {
   list-style: none;
@@ -423,7 +428,8 @@ body {
       #team .container h2 i {
         color: #333; }
     #team .container p, #team .container ul {
-      padding: 0 5em; }
+      padding: 0 5em;
+      text-align: justify; }
     #team .container ul {
       list-style: none; }
       #team .container ul li {
@@ -432,3 +438,6 @@ body {
       color: #333; }
       #team .container a:hover, #team .container a:active {
         color: #333; }
+    #team .container .fork {
+      margin: auto;
+      display: block; }
