@@ -53,6 +53,8 @@ body {
     .logo {
         @include span(8 of 12 first);
 
+        position: relative;
+
         img {
             display: block;
             height: $height * 0.8;
@@ -81,7 +83,7 @@ body {
             color: #000;
             font-size: 1.1em;
             line-height: 1.8em;
-            margin-bottom: 2em;
+            text-align: justify;
         }
 
         .button {
@@ -96,6 +98,7 @@ body {
             border: 2px solid $color;
             border-radius: 5px;
             padding: 0.5em;
+            margin: 2em auto;
 
             a {
                 font-size: 1.5em;
@@ -115,6 +118,11 @@ body {
             &:active {
                 box-shadow: 0 0 5px $color-active;
             }
+        }
+
+        .stars {
+            display: block;
+            margin: auto;
         }
     }
 }
@@ -249,6 +257,7 @@ body {
 
         p, ul {
             padding: 0 5em;
+            text-align: justify;
         }
 
         ul {
@@ -265,6 +274,11 @@ body {
             &:hover, &:active {
                 color: #333;
             }
+        }
+
+        .fork {
+            margin: auto;
+            display: block;
         }
     }
 }
